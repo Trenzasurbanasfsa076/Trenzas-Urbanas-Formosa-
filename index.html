@@ -18,6 +18,11 @@ section{padding:25px}
 button,a.btn{background:#25D366;color:#fff;border:none;padding:10px 15px;border-radius:8px;text-decoration:none;cursor:pointer}
 .float{position:fixed;bottom:20px;right:20px}
 #cart{position:fixed;top:20px;right:20px;background:#fff;color:#000;padding:10px;border-radius:10px;cursor:pointer}
+.historia-container{position:relative;overflow:hidden;border-radius:20px;margin-top:15px;}
+.historia-container a{display:block;text-decoration:none;}
+.historia-img{width:100%;display:block;border-radius:20px;transition:transform .4s ease;}
+.historia-container:hover .historia-img{transform:scale(1.05);}
+.historia-btn{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(111,74,142,.9);color:#fff;padding:12px 25px;border-radius:30px;font-weight:bold;font-size:16px;box-shadow:0 4px 15px rgba(0,0,0,.3);white-space:nowrap;}
 </style>
 </head>
 <body>
@@ -43,7 +48,19 @@ button,a.btn{background:#25D366;color:#fff;border:none;padding:10px 15px;border-
 <section id="quienes">
 <div class="card">
 <h2>¿Quiénes somos?</h2>
-<p>Espacio para tu historia y presentación del emprendimiento.</p>
+<section id="quienes">
+<div class="card">
+<h2>¿Quiénes somos?</h2>
+
+<div class="historia-container">
+<a href="https://www.instagram.com/p/DPmoSZBj8M6/?igsh=cTdiMnlwYTk1eTZz" target="_blank">
+<img src="imagenes/maria-elena-historia.jpg" alt="Conocer mi historia" class="historia-img">
+<div class="historia-btn">💜 Conocer mi historia</div>
+</a>
+</div>
+
+<p>Tocá la imagen para conocer cómo nació Trenzas Urbanas y descubrir quién está detrás de cada trabajo.</p>
+
 </div>
 </section>
 
