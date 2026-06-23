@@ -47,6 +47,12 @@ font-size:18px;
 line-height:1.6;
 }
 
+header p{
+text-align:center;
+max-width:600px;
+margin:0 auto;
+}
+
 /* PRECIOS */
 .precio{
 font-family:'Bebas Neue',sans-serif;
@@ -62,10 +68,10 @@ letter-spacing:2px;
 <nav id="nav">
 <a href="#" onclick="nav.style.width='0'">Cerrar ✖</a>
 <a href="#quienes">CONOCEME</a>
+<a href="#catalogo">CATALOGO DE SERVICIOS</a>
 <a href="#reservas">RESERVA TU CITA</a>
-<a href="#promos">Promos</a>
-<a href="#catalogo">Catálogo</a>
-<a href="#redes">Redes</a>
+<a href="#promos">PROMOS</a>
+<a href="#redes">NUESTRAS REDES</a>
 </nav>
 
 <div id="cart">🛒 <span id="cantidad">0</span></div>
@@ -73,7 +79,7 @@ letter-spacing:2px;
 <header>
 <img src="logo.png" alt="Logo Trenzas Urbanas" class="logo">
 <h1>Trenzas Urbanas</h1>
-<p>Especialistas en trenzas, box braids, fulanis, coletas y diseños personalizados.</p>
+<p>Creamos estilos únicos a través de trenzas personalizadas para todas las edades.</p>
 </header>
 <section id="quienes">
 <div class="card">
@@ -87,6 +93,11 @@ Ver mi historia en Instagram
 </a>
   
 </div>
+</section>
+
+<section id="catalogo">
+<h2>Catálogo</h2>
+<div class="grid" id="catalogoGrid"></div>
 </section>
 
 <section id="reservas">
@@ -113,20 +124,14 @@ Reservar con extensiones
 </div>
 </section>
 
-
-<section id="promos">
-<h2>Promociones del Mes</h2>
+<section id="PROMOS">
+<h2>POMOCIONES DEL MES</h2>
 <div class="card">
 <div class="imgph">IMAGEN PROMO</div>
 <h3>Promo Editable</h3>
 <p>Agregá aquí tus promociones mensuales.</p>
 <button onclick="agregar('Promo Mensual',0)">Agregar al carrito</button>
 </div>
-</section>
-
-<section id="catalogo">
-<h2>Catálogo</h2>
-<div class="grid" id="catalogoGrid"></div>
 </section>
 
 <section id="redes">
