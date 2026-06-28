@@ -1,391 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trenzas Urbanas</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#a88ac0;color:#fff;};background:radial-gradient(circle at 15% 20%, rgba(255,255,255,.12) 2px, transparent 4px),radial-gradient(circle at 80% 30%, rgba(255,255,255,.08) 3px, transparent 5px),radial-gradient(circle at 70% 80%, rgba(255,255,255,.10) 2px, transparent 4px),radial-gradient(circle at 30% 70%, rgba(255,255,255,.06) 4px, transparent 6px),linear-gradient(135deg,#9d7ec4,#a88ac0,#b59bd0);background-attachment:fixed;}
-header{padding:30px;text-align:center}
-.logo{width:180px;height:180px;object-fit:contain;display:block;margin:auto;}
-.menu{position:fixed;top:15px;left:15px;font-size:30px;cursor:pointer}
-nav{position:fixed;left:0;top:0;width:0;height:100%;overflow:hidden;background:#6f4a8e;transition:.3s;z-index:10}
-nav a{display:block;color:#fff;padding:15px;text-decoration:none}
-section{padding:25px}
-.card{background:rgba(255,255,255,.12);padding:20px;border-radius:15px;margin-bottom:15px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
-.imgph{height:180px;border:2px dashed #fff;border-radius:10px;display:flex;align-items:center;justify-content:center}
-button,a.btn{background:#25D366;color:#fff;border:none;padding:10px 15px;border-radius:8px;text-decoration:none;cursor:pointer}
-.float{position:fixed;bottom:20px;right:20px}
-#cart{position:fixed;top:20px;right:20px;background:#fff;color:#000;padding:10px;border-radius:10px;cursor:pointer}
-.historia-container{position:relative;overflow:hidden;border-radius:20px;margin-top:15px;}
-.historia-container a{display:block;text-decoration:none;}
-.historia-img{width:100%;display:block;border-radius:20px;transition:transform .4s ease;}
-.historia-container:hover .historia-img{transform:scale(1.05);}
-.historia-btn{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(111,74,142,.9);color:#fff;padding:12px 25px;border-radius:30px;font-weight:bold;font-size:16px;box-shadow:0 4px 15px rgba(0,0,0,.3);white-space:nowrap;}
-.galeria{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:10px;
-}
-
-.galeria img{
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
-border-radius:15px;
-}
-  /* TÍTULO PRINCIPAL */
-h1{
-font-family:'Bebas Neue',sans-serif;
-font-size:50px;
-letter-spacing:4px;
-text-transform:uppercase;
-margin-bottom:10px;
-text-align:center;
-}
-
-/* SUBTÍTULOS */
-h2,h3{
-font-family:'Playfair Display',serif;
-font-weight:700;
-}
-
-/* DESCRIPCIONES */
-p{
-font-family:'Poppins',sans-serif;
-font-size:18px;
-line-height:1.6;
-}
-
-header p{
-text-align:center;
-max-width:600px;
-margin:0 auto;
-}
-
-/* PRECIOS */
-.precio{
-font-family:'Bebas Neue',sans-serif;
-font-size:32px;
-letter-spacing:2px;
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trenzas Urbanas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.12) 2px, transparent 4px), 
+                  radial-gradient(circle at 80% 30%, rgba(255,255,255,.08) 3px, transparent 5px), 
+                  radial-gradient(circle at 70% 80%, rgba(255,255,255,.10) 2px, transparent 4px), 
+                  radial-gradient(circle at 30% 70%, rgba(255,255,255,.06) 4px, transparent 6px), 
+                  linear-gradient(135deg, #9d7ec4, #a88ac0, #b59bd0);
+      background-attachment: fixed;
+      color: #fff;
+    }
+    header {
+      padding: 30px;
+      text-align: center;
+    }
+    .logo {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+    .menu {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    nav {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #6f4a8e;
+      transition: .3s;
+      z-index: 10;
+    }
+    nav a {
+      display: block;
+      color: #fff;
+      padding: 15px;
+      text-decoration: none;
+    }
+    section {
+      padding: 25px;
+    }
+    .card {
+      background: rgba(255,255,255,.12);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    .imgph {
+      height: 180px;
+      border: 2px dashed #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button, a.btn {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+    #cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      color: #000;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .historia-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      margin-top: 15px;
+    }
+    .historia-container a {
+      display: block;
+      text-decoration: none;
+    }
+    .historia-img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      transition: transform .4s ease;
+    }
+    .historia-container:hover .historia-img {
+      transform: scale(1.05);
+    }
+    .historia-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(111,74,142,.9);
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.3);
+      white-space: nowrap;
+    }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .galeria img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 50px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    header p {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .precio {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="menu" onclick="nav.style.width='260px'">☰</div>
-<nav id="nav">
-<a href="#" onclick="nav.style.width='0'">Cerrar ✖</a>
-<a href="#quienes">CONOCEME</a>
-<a href="#catalogo">CATALOGO DE SERVICIOS</a>
-<a href="#promos">PROMOS</a>
-<a href="#galeria">GALERIA DE TRABAJOS </a>
-<a href="#redes">NUESTRAS REDES</a>
-</nav>
+  <div class="menu" onclick="nav.style.width='260px'">☰</div>
+  <nav id="nav">
+    <a href="#" onclick="nav.style.width='0'">Cerrar ✖</a>
+    <a href="#quienes">CONÓCEME</a>
+    <a href="#catalogo">CATÁLOGO DE SERVICIOS</a>
+    <a href="#promos">PROMOS</a>
+    <a href="#galeria">GALERÍA DE TRABAJOS</a>
+    <a href="#redes">NUESTRAS REDES</a>
+  </nav>
 
-<div id="cart">
-📅 MI RESERVA (<span id="cantidad">0</span>)
-</div>
-
-
-<header>
-<img src="logo.png" alt="Logo Trenzas Urbanas" class="logo">
-<h1>Trenzas Urbanas</h1>
-<p>Creamos estilos únicos a través de trenzas personalizadas para todas las edades.</p>
-</header>
-<section id="quienes">
-<div class="card">
-
-<h2>MI HISTORIA💜</h2>
-
-<p>Tocá el enlace para conocer cómo nació Trenzas Urbanas y descubrir quién está detrás de cada trabajo.</p>
-
-<a class="btn" href="https://www.instagram.com/p/DPmoSZBj8M6/?igsh=cTdiMnlwYTk1eTZz" target="_blank">
-Ver mi historia en Instagram
-</a>
-  
-</div> 
-</section> 
-
-<section id="catalogo"> 
-<h2>Catálogo</h2> 
-<div class="grid" id="catalogoGrid"></div>
-</section>
-
-  
-<section id="PROMOS">
-<h2>POMOCIONES DEL MES</h2>
-<div class="card">
-<div class="imgph">IMAGEN PROMO</div>
-<h3>Promo Editable</h3>
-<p>Agregá aquí tus promociones mensuales.</p>
-<button onclick="agregar('Promo Mensual',0)">Agregar al carrito</button>
-</div>
-</section>
-
-<section id="galeria">
-<div class="card">
-<h2> Galería de Trabajos</h2>
-
-<div class="galeria">
-<img src="IMG-1.jpg">
-<img src="IMG-2.jpg">
-<img src="IMG-20260120-WA0026.jpg">
-<img src="Polish_20250906_212749490.jpg">
-<img src="Polish_20251117_105259763.jpg">
-<img src="Polish_20251213_201931954.jpg">
-<img src="Polish_20260119_132342937.jpg">
-<img src="Polish_20260124_210323654.jpg">
-<img src="Polish_20260202_143314029.jpg">
-<img src="Polish_20260213_110215226.jpg">
-<img src="Polish_20260419_173438026.jpg">
-<img src="Polish_20260510_184549120.jpg">
-<img src="Polish_20260510_203337325.jpg">
-</div>
-
-</div>
-</section>
-
-<section id="redes">
-  <div class="card">
-    <h2>Redes Sociales</h2>
-
-    <p>Seguinos en nuestras redes para ver trabajos, promociones y novedades 💜</p>
-
-    <a class="btn" href="https://www.instagram.com/trenzas.urbanas_fsa" target="_blank">
-      Instagram
-    </a>
-
-    <br><br>
-
-    <a class="btn" href="https://www.tiktok.com/@trenzas.urbanas_fsa?is_from_webapp=1&sender_device=pc" target="_blank">
-      TikTok
-    </a>
-
-    <br><br>
-
-    <a class="btn" href="https://www.facebook.com/share/1AxaCwkpqf/" target="_blank">
-      Facebook
-    </a>
-
+  <div id="cart">
+    📅 MI RESERVA (<span id="cantidad">0</span>)
   </div>
-</section>
 
-<a class="btn float" href="https://wa.me/543705141113?text=Quiero%20reservar%20un%20turno..." target="_blank">WhatsApp</a>
+  <header>
+    <img src="logo.png" alt="Logo Trenzas Urbanas" class="logo">
+    <h1>Trenzas Urbanas</h1>
+    <p>Creamos estilos únicos a través de trenzas personalizadas para todas las edades.</p>
+  </header>
 
-<script>
-  <section id="catálogo">
-  <div class="card">
-    <h2>Catálogo de servicios</h2>
-const catalogo = [
+  <!-- ========================= -->
+  <!-- CONÓCEME -->
+  <!-- ========================= -->
 
-{
-categoria:"⭐ Trenzas Simples",
-
-servicios:[
-
-{
-nombre:"Dos Trenzas Boxeadoras",
-precio:"$10.000",
-descripcion:"Descripción...",
-tipo:"sin",
-imagen:"imagenes/dos-trenzas.jpg"
-},
-
-{
-nombre:"Cuatro Trenzas",
-precio:"$15.000",
-descripcion:"Descripción...",
-tipo:"sin",
-imagen:"imagenes/cuatro-trenzas.jpg"
-},
-
-{
-nombre:"Cinco Trenzas",
-precio:"$18.000",
-descripcion:"Descripción...",
-tipo:"sin",
-imagen:"imagenes/cinco-trenzas.jpg"
-}
-
-]
-
-},
-
-{
-categoria:"✨ Trenzas con Extensiones",
-
-servicios:[
-
-{
-nombre:"Box Braids Jumbo",
-precio:"$80.000",
-descripcion:"Incluye 4 paquetes.",
-tipo:"con",
-imagen:"imagenes/box-jumbo.jpg"
-},
-
-{
-nombre:"Box Braids Medianas",
-precio:"$120.000",
-descripcion:"Incluye 5 paquetes.",
-tipo:"con",
-imagen:"imagenes/box-medianas.jpg"
-},
-
-{
-nombre:"Fulanis",
-precio:"$120.000",
-descripcion:"Incluye 5 paquetes.",
-tipo:"con",
-imagen:"imagenes/fulanis.jpg"
-}
-
-]
-
-},
-
-{
-categoria:"👑 Coletas",
-
-servicios:[
-
-{
-nombre:"Bubble Glam",
-precio:"$30.000",
-descripcion:"Sin extensiones",
-tipo:"sin",
-imagen:"imagenes/bubble-glam.jpg"
-},
-
-{
-nombre:"Bubble Glam XL",
-precio:"$60.000",
-descripcion:"Con extensiones",
-tipo:"con",
-imagen:"imagenes/bubble-glam-xl.jpg"
-}
-
-]
-
-},
-
-{
-categoria:"💜 Recogidos",
-
-servicios:[
-
-{
-nombre:"Recogido Elegante",
-precio:"$35.000",
-descripcion:"",
-tipo:"sin",
-imagen:"imagenes/recogido-elegante.jpg"
-},
-
-{
-nombre:"Recogido con Trenzas",
-precio:"$45.000",
-descripcion:"",
-tipo:"sin",
-imagen:"imagenes/recogido-trenzas.jpg"
-}
-
-]
-
-}
-
-];
-
-
-let carrito=[];
-const grid=document.getElementById("catalogoGrid");
-
-servicios.forEach(s=>{
-grid.innerHTML+=`
-<div class="card">
-<div class="imgph">AGREGAR IMAGEN</div>
-<h3>${s[0]}</h3>
-<p><strong>${s[1]}</strong></p>
-<p>${s[2]}</p>
-<button onclick="agregar('${s[0]}','${s[1]}','${s[3]}')">
-Agregar al carrito
-</button>
-
-</div>`
-});
-
-function agregar(nombre,precio,tipo){
-carrito.push({nombre,precio,tipo});
-document.getElementById("cantidad").innerText=carrito.length;
-}
-
-document.getElementById("cart").onclick=function(){
-
-if(carrito.length===0){
-alert("Todavía no agregaste ningún servicio.");
-return;
-}
-
-let textoServicios="";
-let llevaExtensiones=false;
-
-carrito.forEach(servicio=>{
-
-textoServicios+=`
-• ${servicio.nombre}
-${servicio.precio}
-
-`;
-
-if(servicio.tipo==="con"){
-llevaExtensiones=true;
-}
-
-});
-
-let sena=llevaExtensiones ? "$30.000" : "$5.000";
-
-let opcion=confirm(
-"TU RESERVA\n\n"+
-textoServicios+
-"\nSeña requerida: "+sena+
-"\n\nAceptar = WhatsApp"+
-"\nCancelar = Pagar Seña"
-);
-
-if(opcion){
-
-let mensaje="Hola, quiero reservar:%0A%0A";
-
-carrito.forEach(servicio=>{
-mensaje+="• "+servicio.nombre+" - "+servicio.precio+"%0A";
-});
-
-window.open(
-"https://wa.me/543705141113?text="+mensaje
-);
-
-}else{
-
-if(llevaExtensiones){
-
-window.open("https://mpago.la/1sJmJyQ");
-
-}else{
-
-window.open("https://mpago.la/1A9AMqs");
-
-}
-
-}
-
-}
-
-</script>
-
-</body>
-</html>
+  <section id="quienes">
+    <div class="card">
+      <h2>MI HISTORIA💜</h2>
+      <p>Tocá el enlace para conocer cómo nació Trenzas Urbanas y descubrir quién está detrás de cada trabajo.</p>
+      <a class="btn" href="https://www.instagram.com/p/DPmoSZBj8M6/?igsh=cTdiMnlwYTk1eTZz" target="_blank">
+        Ver mi historia en Instagram
+      </a>
+    </div>
+  </section>
