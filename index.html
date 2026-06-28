@@ -258,3 +258,125 @@
 </section>
 
 <a class="btn float" href="https://wa.me/543705141113?text=Quiero%20reservar%20un%20turno..." target="_blank">WhatsApp</a>
+
+  <script>
+  let carrito = [];
+
+  const catalogo = [
+    {
+      titulo: "⭐ Trenzas Simples",
+      servicios: [
+        {
+          nombre: "2 Trenzas Boxeadoras",
+          precio: 10000,
+          img: "imagenes/dos-trenzas.jpg"
+        },
+        {
+          nombre: "4 Trenzas",
+          precio: 15000,
+          img: "imagenes/cuatro-trenzas.jpg"
+        },
+        {
+          nombre: "5 Trenzas",
+          precio: 18000,
+          img: "imagenes/cinco-trenzas.jpg"
+        }
+      ]
+    },
+    {
+      titulo: "✨ Trenzas con Extensiones",
+      servicios: [
+        {
+          nombre: "Box Braids Jumbo",
+          precio: 80000,
+          img: "imagenes/box-jumbo.jpg"
+        },
+        {
+          nombre: "Box Braids Medianas",
+          precio: 120000,
+          img: "imagenes/box-medianas.jpg"
+        },
+        {
+          nombre: "Fulanis",
+          precio: 120000,
+          img: "imagenes/fulanis.jpg"
+        }
+      ]
+    },
+    {
+      titulo: "👑 Coletas",
+      servicios: [
+        {
+          nombre: "Bubble Glam",
+          precio: 30000,
+          img: "imagenes/bubble-glam.jpg"
+        },
+        {
+          nombre: "Bubble Glam XL",
+          precio: 60000,
+          img: "imagenes/bubble-glam-xl.jpg"
+        }
+      ]
+    },
+    {
+      titulo: "💜 Recogidos",
+      servicios: [
+        {
+          nombre: "Recogido Elegante",
+          precio: 35000,
+          img: "imagenes/recogido-elegante.jpg"
+        },
+        {
+          nombre: "Recogido con Trenzas",
+          precio: 45000,
+          img: "imagenes/recogido-trenzas.jpg"
+        }
+      ]
+    }
+  ];
+
+  const grid = document.getElementById("catalogoGrid");
+
+  catalogo.forEach(categoria => {
+    // Agregamos el título de la categoría
+    grid.innerHTML += `<h2>${categoria.titulo}</h2>`;
+    let gridServicios = `<div class="grid">`;
+    
+    categoria.servicios.forEach(s => {
+      gridServicios += `
+        <div class="card">
+          <img src="${s.img}" class="img" alt="${s.nombre}">
+          <h3>${s.nombre}</h3>
+          <p class="precio">$${s.precio.toLocaleString()}</p>
+          <button onclick="agregar('${s.nombre}', ${s.precio})">Agregar al carrito</button>
+        </div>`;
+    });
+    gridServicios += `</div>`;
+    grid.innerHTML += gridServicios;
+  });
+
+  function agregar(nombre, precio) {
+    carrito.push({ nombre, precio });
+    document.getElementById("cantidad").innerText = carrito.length;
+  }
+
+  document.getElementById("cart").onclick = function () {
+    if (carrito.length === 0) {
+      alert("Todavía no agregaste ningún servicio.");
+      return;
+    }
+
+    let mensaje = "Hola, quiero reservar:%0A%0A";
+    let total = 0;
+
+    carrito.forEach(i => {
+      mensaje += `• ${i.nombre} - $${i.precio.toLocaleString()}%0A`;
+      total += i.precio;
+    });
+
+    mensaje += `%0ATotal: $${total.toLocaleString()}`;
+
+    window.open("https://wa.me/543705141113?text=" + mensaje);
+  };
+  </script>
+  
