@@ -557,24 +557,63 @@
     document.getElementById("cantidad").innerText = carrito.length;
   }
 
-  document.getElementById("cart").onclick = function () {
-    if (carrito.length === 0) {
-      alert("Todavía no agregaste ningún servicio.");
-      return;
+  let descuento = 0;
+
+document.getElementById("cart").onclick = function () {
+  if (carrito.length === 0) {
+    alert("Todavía no agregaste ningún servicio.");
+    return;
+  }
+
+  actualizarCarrito();
+  document.getElementById("modalCarrito").style.display = "block";
+};
+
+function cerrarCarrito() {
+  document.getElementById("modalCarrito").style.display = "none";
+}
+
+function aplicarDescuento(porcentaje) {
+  descuento = porcentaje;
+  actualizarCarrito();
+}
+
+function actualizarCarrito() {
+
+  let lista = document.getElementById("listaCarrito");
+  lista.innerHTML = "";
+
+  let subtotal = 0;
+
+  carrito.forEach((item, index) => {
+    subtotal += item.precio;
+
+    lista.innerHTML += `
+      <p>
+        ${item.nombre} - $${item.precio.toLocaleString()}
+        <button onclick="eliminar(${index})">❌</button>
+      </p>
+    `;
+  });
+
+  let total = subtotal - (subtotal * descuento / 100);
+
+  document.getElementById("subtotal").innerText = "$" + subtotal.toLocaleString();
+  document.getElementById("descuento").innerText = descuento + "%";
+  document.getElementById("total").innerText = "$" + total.toLocaleString();
+}
+
+function eliminar(i) {
+  carrito.splice(i, 1);
+  document.getElementById("cantidad").innerText = carrito.length;
+
+  if (carrito.length == 0) {
+    cerrarCarrito();
+    return;
+  }
+
+  actualizarCarrito();
     }
-
-    let mensaje = "Hola, quiero reservar:%0A%0A";
-    let total = 0;
-
-    carrito.forEach(i => {
-      mensaje += `• ${i.nombre} - $${i.precio.toLocaleString()}%0A`;
-      total += i.precio;
-    });
-
-    mensaje += `%0ATotal: $${total.toLocaleString()}`;
-
-    window.open("https://wa.me/543705141113?text=" + mensaje);
-  };
   </script>
   
 </body>
