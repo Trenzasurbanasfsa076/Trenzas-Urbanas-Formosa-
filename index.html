@@ -250,11 +250,34 @@
   </section>
 
   <section id="catalogo">
-  <h2>Catálogo</h2>
-  <div class="grid" id="catalogoGrid">
-    <!-- El catálogo se generará con JavaScript -->
-  </div>
-</section>
+
+<h2>Catálogo</h2>
+
+<div id="filtros" style="margin-bottom:25px;text-align:center;">
+
+<button onclick="filtrar('todos')">Todos</button>
+
+<button onclick="filtrar('TRENZAS SIMPLES SIN EXTENSIONES')">
+Trenzas Simples
+</button>
+
+<button onclick="filtrar('TRENZAS CON EXTENSIONES KANEKALON')">
+Kanekalon
+</button>
+
+<button onclick="filtrar('EXTENSIONES KANEKALON Y ACCESORIOS')">
+Accesorios
+</button>
+
+<button onclick="filtrar('💜 Recogidos')">
+Recogidos
+</button>
+
+</div>
+
+<div id="catalogoGrid"></div>
+
+  </section>
 
 <section id="promos">
   <h2>💜 PROMOCIONES DE JULIO</h2>
@@ -516,7 +539,49 @@
 
   const grid = document.getElementById("catalogoGrid");
 
-  catalogo.forEach(categoria => {
+  function mostrarCatalogo(filtro = "todos") {
+
+grid.innerHTML = "";
+
+catalogo.forEach(categoria => {
+
+if (filtro != "todos" && categoria.titulo != filtro) return;
+
+grid.innerHTML += `<h2>${categoria.titulo}</h2>`;
+
+let gridServicios = `<div class="grid">`;
+
+categoria.servicios.forEach(s => {
+
+gridServicios += `
+<div class="card">
+
+<img src="${s.img}" alt="${s.nombre}">
+
+<h3>${s.nombre}</h3>
+
+<p class="descripcion">${s.descripcion}</p>
+
+<p class="precio">$${s.precio.toLocaleString()}</p>
+
+<button onclick="agregar('${s.nombre}',${s.precio})">
+Agregar al carrito
+</button>
+
+</div>
+`;
+
+});
+
+gridServicios += "</div>";
+
+grid.innerHTML += gridServicios;
+
+});
+
+}
+
+mostrarCatalogo();
     // Agregamos el título de la categoría
     grid.innerHTML += `<h2>${categoria.titulo}</h2>`;
     let gridServicios = `<div class="grid">`;
