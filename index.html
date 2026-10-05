@@ -2,737 +2,2374 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trenzas Urbanas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Trenzas Urbanas | Turnos</title>
+
+  <meta name="description" content="Trenzas Urbanas - Catálogo y reserva de turnos. Elegí tu servicio, fecha y horario y solicitá tu turno por WhatsApp.">
+
   <style>
-    body {
+    :root {
+      --violeta-oscuro: #24102f;
+      --violeta: #6f3c8f;
+      --violeta-medio: #8753a5;
+      --lila: #c9a9d8;
+      --lila-claro: #eadff0;
+      --blanco: #ffffff;
+      --gris: #f6f3f7;
+      --texto: #2c2430;
+      --verde: #25d366;
+      --rojo: #b73d5b;
+      --sombra: 0 12px 35px rgba(36, 16, 47, 0.13);
+      --radio: 22px;
+    }
+
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.12) 2px, transparent 4px), 
-                  radial-gradient(circle at 80% 30%, rgba(255,255,255,.08) 3px, transparent 5px), 
-                  radial-gradient(circle at 70% 80%, rgba(255,255,255,.10) 2px, transparent 4px), 
-                  radial-gradient(circle at 30% 70%, rgba(255,255,255,.06) 4px, transparent 6px), 
-                  linear-gradient(135deg, #9d7ec4, #a88ac0, #b59bd0);
-      background-attachment: fixed;
-      color: #fff;
+      padding: 0;
+      box-sizing: border-box;
     }
-    header {
-      padding: 30px;
-      text-align: center;
+
+    html {
+      scroll-behavior: smooth;
     }
-    .logo {
-      width: 180px;
-      height: 180px;
-      object-fit: contain;
-      display: block;
-      margin: auto;
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--gris);
+      color: var(--texto);
+      line-height: 1.5;
     }
-    .menu {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      font-size: 30px;
+
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
+    button {
       cursor: pointer;
     }
-    nav {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 0;
-      height: 100%;
-      overflow: hidden;
-      background: #6f4a8e;
-      transition: .3s;
-      z-index: 10;
-    }
-    nav a {
-      display: block;
-      color: #fff;
-      padding: 15px;
-      text-decoration: none;
-    }
-    section {
-      padding: 25px;
-    }
-    .card {
-      background: rgba(255,255,255,.12);
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
-    .grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
 
-@media (max-width:900px){
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
+    /* =========================
+       HEADER
+    ========================= */
 
-@media (max-width:600px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
-    .imgph {
-      height: 180px;
-      border: 2px dashed #fff;
-      border-radius: 10px;
+    header {
+      background:
+        radial-gradient(circle at top right, rgba(201,169,216,.20), transparent 30%),
+        linear-gradient(145deg, #24102f, #4c2362);
+      color: white;
+      min-height: 620px;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
     }
-    button, a.btn {
-      background: #25D366;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-    }
-    #cart {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #fff;
-      color: #000;
-      padding: 10px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .historia-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      margin-top: 15px;
-    }
-    .historia-container a {
-      display: block;
-      text-decoration: none;
-    }
-    .historia-img {
+
+    .hero {
       width: 100%;
-      display: block;
-      border-radius: 20px;
-      transition: transform .4s ease;
+      max-width: 900px;
     }
-    .historia-container:hover .historia-img {
-      transform: scale(1.05);
+
+    .logo-container {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 30px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
     }
-    .historia-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(111,74,142,.9);
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,.3);
-      white-space: nowrap;
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
-    .galeria {
+
+    .logo-placeholder {
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: 1px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 78px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: clamp(18px, 3vw, 24px);
+      color: #eee3f2;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 35px;
+      background: white;
+      color: var(--violeta-oscuro);
+      padding: 15px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    .section {
+      width: min(1180px, 92%);
+      margin: auto;
+      padding: 75px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--violeta-oscuro);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #756a79;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* =========================
+       SERVICIOS
+    ========================= */
+
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(36,16,47,.18);
+    }
+
+    .service-image {
+      height: 230px;
+      background: linear-gradient(135deg, #8b5ca6, #3b194c);
+      overflow: hidden;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-no-image {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .service-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .service-info h3 {
+      color: var(--violeta-oscuro);
+      font-size: 23px;
+      margin-bottom: 8px;
+      font-weight: 900;
+    }
+
+    .service-info p {
+      color: #706875;
+      font-size: 15px;
+      flex: 1;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      font-size: 23px;
+      color: var(--violeta);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .add-button {
+      width: 100%;
+      border: none;
+      background: var(--violeta);
+      color: white;
+      padding: 14px;
+      border-radius: 13px;
+      font-weight: 800;
+      font-size: 15px;
+      transition: .2s;
+    }
+
+    .add-button:hover {
+      background: var(--violeta-oscuro);
+    }
+
+    /* =========================
+       CARRITO FLOTANTE
+    ========================= */
+
+    .cart-button {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      border: none;
+      background: var(--violeta);
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      box-shadow: 0 8px 30px rgba(36,16,47,.35);
+      font-size: 25px;
+      transition: .2s;
+    }
+
+    .cart-button:hover {
+      transform: scale(1.07);
+      background: var(--violeta-oscuro);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -3px;
+      background: #fff;
+      color: var(--violeta);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      border: 2px solid var(--violeta);
+    }
+
+    .cart-panel {
+      position: fixed;
+      right: -450px;
+      top: 0;
+      width: min(430px, 94%);
+      height: 100vh;
+      background: white;
+      z-index: 1100;
+      box-shadow: -10px 0 40px rgba(0,0,0,.18);
+      transition: right .3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-panel.open {
+      right: 0;
+    }
+
+    .cart-header {
+      background: var(--violeta-oscuro);
+      color: white;
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-header h2 {
+      font-size: 22px;
+    }
+
+    .close-cart {
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 28px;
+    }
+
+    .cart-content {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 50px 15px;
+      color: #827786;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
       gap: 10px;
     }
-    .galeria img {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      border-radius: 15px;
+
+    .cart-item-name {
+      font-weight: 800;
+      color: var(--violeta-oscuro);
     }
-    /* IMÁGENES DEL CATÁLOGO */
-.card img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  border-radius:12px;
-  display:block;
-  margin-bottom:10px;
-}
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 50px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      text-align: center;
+
+    .cart-item-price {
+      font-weight: 800;
+      color: var(--violeta);
+      white-space: nowrap;
     }
-    h2, h3 {
-      font-family: 'Playfair Display', serif;
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quantity button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background: var(--lila-claro);
+      border-radius: 8px;
+      color: var(--violeta-oscuro);
+      font-weight: 900;
+    }
+
+    .remove-button {
+      background: transparent;
+      border: none;
+      color: var(--rojo);
+      font-size: 13px;
       font-weight: 700;
     }
-    p {
-      font-family: 'Poppins', sans-serif;
-      font-size: 18px;
-      line-height: 1.6;
+
+    .cart-total {
+      border-top: 2px solid #eee;
+      padding-top: 18px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 21px;
+      font-weight: 900;
     }
-    header p {
+
+    .continue-button {
+      width: 100%;
+      margin-top: 20px;
+      border: none;
+      background: var(--violeta);
+      color: white;
+      padding: 15px;
+      border-radius: 13px;
+      font-weight: 900;
+    }
+
+    .continue-button:disabled {
+      background: #c8c2ca;
+      cursor: not-allowed;
+    }
+
+    /* =========================
+       RESERVA
+    ========================= */
+
+    .booking-box {
+      background: white;
+      border-radius: 28px;
+      box-shadow: var(--sombra);
+      padding: clamp(25px, 5vw, 50px);
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .step {
+      margin-bottom: 40px;
+    }
+
+    .step-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--violeta-oscuro);
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .step-number {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--violeta);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .location-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .location-option {
+      position: relative;
+    }
+
+    .location-option input {
+      display: none;
+    }
+
+    .location-option label {
+      display: block;
+      border: 2px solid #e4dce8;
+      padding: 22px;
+      border-radius: 16px;
       text-align: center;
-      max-width: 600px;
-      margin: 0 auto;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s;
     }
-    .precio {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 2px;
+
+    .location-option input:checked + label {
+      border-color: var(--violeta);
+      background: var(--lila-claro);
+      color: var(--violeta-oscuro);
     }
-    .descripcion{
-      font-size:14px;  
-      color:#f5f5f5;
-      line-height:1.5;
-      margin:8px 0;
+
+    .home-notice {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background: #f7eff9;
+      border-radius: 12px;
+      color: #5b4961;
+      font-size: 14px;
     }
-    .titulo-categoria{
-    text-align:center;
-    font-size:34px;
-    margin:60px 0 30px;
-    width:100%;
-    color:#fff;
-}
+
+    .home-notice.show {
+      display: block;
+    }
+
+    .date-input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e4dce8;
+      border-radius: 13px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .date-input:focus {
+      border-color: var(--violeta);
+    }
+
+    .date-help {
+      margin-top: 9px;
+      font-size: 13px;
+      color: #817583;
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .time-button {
+      border: 2px solid #e4dce8;
+      background: white;
+      border-radius: 12px;
+      padding: 13px;
+      font-weight: 800;
+      color: var(--violeta-oscuro);
+      transition: .2s;
+    }
+
+    .time-button:hover:not(:disabled),
+    .time-button.selected {
+      border-color: var(--violeta);
+      background: var(--violeta);
+      color: white;
+    }
+
+    .time-button:disabled {
+      background: #f0eef1;
+      color: #a6a0a8;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+
+    .no-times {
+      padding: 20px;
+      border-radius: 13px;
+      background: #f8f5f8;
+      color: #756b78;
+      text-align: center;
+    }
+
+    /* =========================
+       RESUMEN
+    ========================= */
+
+    .summary-box {
+      background: #faf7fb;
+      border: 1px solid #e7ddeb;
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 9px 0;
+    }
+
+    .summary-line strong {
+      color: var(--violeta-oscuro);
+    }
+
+    .summary-total {
+      border-top: 1px solid #ddd3e0;
+      margin-top: 10px;
+      padding-top: 15px;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .whatsapp-button {
+      width: 100%;
+      margin-top: 20px;
+      border: none;
+      background: var(--verde);
+      color: white;
+      padding: 17px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 16px;
+      transition: .2s;
+    }
+
+    .whatsapp-button:hover {
+      filter: brightness(.94);
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: var(--violeta-oscuro);
+      color: white;
+      padding: 60px 20px 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    footer h2 {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      color: #d9cce0;
+      margin: 7px 0;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .socials a {
+      color: white;
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 10px 17px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .socials a:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    .footer-reserve {
+      display: inline-block;
+      color: var(--violeta-oscuro);
+      background: white;
+      text-decoration: none;
+      padding: 14px 25px;
+      border-radius: 50px;
+      font-weight: 900;
+    }
+
+    .copyright {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aa9db0;
+    }
+
+    /* =========================
+       FONDO MODAL
+    ========================= */
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22,10,28,.55);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      header {
+        min-height: 560px;
+      }
+
+      .logo-container {
+        width: 125px;
+        height: 125px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-image {
+        height: 250px;
+      }
+
+      .location-options {
+        grid-template-columns: 1fr;
+      }
+
+      .time-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section {
+        padding: 55px 0;
+      }
+
+      .booking-box {
+        padding: 25px 18px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-  <div class="menu" onclick="nav.style.width='260px'">☰</div>
-  <nav id="nav">
-    <a href="#" onclick="nav.style.width='0'">Cerrar ✖</a>
-    <a href="#quienes">CONÓCEME</a>
-    <a href="#catalogo">CATÁLOGO DE SERVICIOS</a>
-    <a href="#promos">PROMOS</a>
-    <a href="#galeria">GALERÍA DE TRABAJOS</a>
-    <a href="#redes">NUESTRAS REDES</a>
-  </nav>
-
-  <div id="cart">
-    🛒 MI RESERVA (<span id="cantidad">0</span>)
-  </div>
-  <div id="modalCarrito" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;">
-
-<div style="background:#fff;color:#000;width:90%;max-width:500px;margin:40px auto;padding:20px;border-radius:15px;max-height:80vh;overflow:auto;">
-
-<h2>🛒 Mi Reserva</h2>
-
-<div id="listaCarrito"></div>
-
-<hr>
-
-<p>Subtotal: <strong id="subtotal">$0</strong></p>
-<p>Descuento: <strong id="descuento">0%</strong></p>
-<p>Total: <strong id="total">$0</strong></p>
-
-<br>
-
-<button onclick="aplicarDescuento(5)">💜 Aplicar 5%</button>
-
-<br><br>
-
-<button onclick="enviarWhatsApp()">📲 Enviar por WhatsApp</button>
-
-<button onclick="cerrarCarrito()">❌ Cerrar</button>
-
-</div>
-
-  </div>
+  <!-- =====================================================
+       ENCABEZADO
+  ====================================================== -->
 
   <header>
-    <img src="logo.png" alt="Logo Trenzas Urbanas" class="logo">
-    <h1>Trenzas Urbanas</h1>
-    <p>📍 Formosa capital <p>
-    <p> Bº Don Bosco - Fotheringham 1095 </p>
-    
-    <p>Creamos estilos únicos a través de trenzas personalizadas para todas las edades.</p>
+
+    <div class="hero">
+
+      <!--
+        PARA PONER TU LOGO:
+
+        Reemplazá este bloque:
+
+        <div class="logo-placeholder">
+          TU LOGO
+        </div>
+
+        por:
+
+        <img src="imagenes/logo.png" alt="Trenzas Urbanas">
+      -->
+
+      <div class="logo-container">
+
+        <div class="logo-placeholder">
+          TU LOGO
+        </div>
+
+      </div>
+
+      <h1>Trenzas Urbanas</h1>
+
+      <p>
+        Trenzas, color y estilo.
+        Elegí tu servicio y solicitá tu turno de manera rápida y sencilla.
+      </p>
+
+      <a href="#servicios" class="hero-button">
+        VER SERVICIOS
+      </a>
+
+    </div>
+
   </header>
 
-  <!-- ========================= -->
-  <!-- CONÓCEME -->
-  <!-- ========================= -->
 
-  <section id="quienes">
-    <div class="card">
-      <h2>MI HISTORIA💜</h2>
-      <p>Tocá el enlace para conocer cómo nació Trenzas Urbanas y descubrir quién está detrás de cada trabajo.</p>
-      <a class="btn" href="https://www.instagram.com/p/DPmoSZBj8M6/?igsh=cTdiMnlwYTk1eTZz" target="_blank">
-        Ver mi historia en Instagram
+  <!-- =====================================================
+       SERVICIOS
+  ====================================================== -->
+
+  <main>
+
+    <section class="section" id="servicios">
+
+      <div class="section-title">
+
+        <h2>Servicios</h2>
+
+        <p>
+          Todos nuestros servicios son personalizados.
+          Trabajamos con y sin extensiones Kanekalon.
+        </p>
+
+      </div>
+
+
+      <div class="services-grid" id="servicesGrid">
+        <!-- Los servicios se cargan automáticamente con JavaScript -->
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESERVA
+    ====================================================== -->
+
+    <section class="section" id="reserva">
+
+      <div class="section-title">
+
+        <h2>Reservá tu turno</h2>
+
+        <p>
+          Elegí tus servicios, modalidad, fecha y horario.
+          Después te enviaremos a WhatsApp para confirmar tu solicitud.
+        </p>
+
+      </div>
+
+
+      <div class="booking-box">
+
+
+        <!-- PASO 1 -->
+
+        <div class="step">
+
+          <div class="step-title">
+
+            <span class="step-number">1</span>
+
+            ¿Dónde querés realizar tu servicio?
+
+          </div>
+
+
+          <div class="location-options">
+
+            <div class="location-option">
+
+              <input
+                type="radio"
+                name="location"
+                id="studio"
+                value="En el estudio"
+                checked
+              >
+
+              <label for="studio">
+                EN EL ESTUDIO
+              </label>
+
+            </div>
+
+
+            <div class="location-option">
+
+              <input
+                type="radio"
+                name="location"
+                id="home"
+                value="A domicilio"
+              >
+
+              <label for="home">
+                A DOMICILIO
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <div class="home-notice" id="homeNotice">
+
+            El servicio a domicilio tiene un recargo según la zona.
+            El valor del recargo será confirmado por WhatsApp.
+
+          </div>
+
+        </div>
+
+
+        <!-- PASO 2 -->
+
+        <div class="step">
+
+          <div class="step-title">
+
+            <span class="step-number">2</span>
+
+            Elegí tu fecha
+
+          </div>
+
+
+          <input
+            type="date"
+            id="dateInput"
+            class="date-input"
+          >
+
+          <p class="date-help">
+            Solo podrás seleccionar fechas habilitadas.
+          </p>
+
+        </div>
+
+
+        <!-- PASO 3 -->
+
+        <div class="step">
+
+          <div class="step-title">
+
+            <span class="step-number">3</span>
+
+            Elegí tu horario
+
+          </div>
+
+
+          <div
+            class="time-grid"
+            id="timeGrid"
+          >
+
+            <div class="no-times">
+              Primero elegí una fecha.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PASO 4 -->
+
+        <div class="step">
+
+          <div class="step-title">
+
+            <span class="step-number">4</span>
+
+            Resumen de tu turno
+
+          </div>
+
+
+          <div class="summary-box">
+
+            <div id="summaryServices">
+              Seleccioná al menos un servicio.
+            </div>
+
+
+            <div class="summary-line">
+
+              <span>Modalidad</span>
+
+              <strong id="summaryLocation">
+                En el estudio
+              </strong>
+
+            </div>
+
+
+            <div class="summary-line">
+
+              <span>Fecha</span>
+
+              <strong id="summaryDate">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="summary-line">
+
+              <span>Horario</span>
+
+              <strong id="summaryTime">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="summary-line summary-total">
+
+              <span>Total de servicios</span>
+
+              <strong id="summaryTotal">
+                $0
+              </strong>
+
+            </div>
+
+
+            <button
+              class="whatsapp-button"
+              id="whatsappButton"
+            >
+              SOLICITAR TURNO POR WHATSAPP
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       CARRITO FLOTANTE
+  ====================================================== -->
+
+  <button
+    class="cart-button"
+    id="cartButton"
+    aria-label="Abrir carrito"
+  >
+
+    🛒
+
+    <span
+      class="cart-count"
+      id="cartCount"
+    >
+      0
+    </span>
+
+  </button>
+
+
+  <div
+    class="overlay"
+    id="overlay"
+  ></div>
+
+
+  <aside
+    class="cart-panel"
+    id="cartPanel"
+  >
+
+    <div class="cart-header">
+
+      <h2>Tu reserva</h2>
+
+      <button
+        class="close-cart"
+        id="closeCart"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="cart-content">
+
+      <div id="cartItems">
+
+        <div class="empty-cart">
+
+          Tu carrito está vacío.
+
+          <br><br>
+
+          Elegí uno o más servicios para comenzar.
+
+        </div>
+
+      </div>
+
+
+      <div class="cart-total">
+
+        <span>Total</span>
+
+        <span id="cartTotal">
+          $0
+        </span>
+
+      </div>
+
+
+      <button
+        class="continue-button"
+        id="continueButton"
+      >
+        CONTINUAR CON LA RESERVA
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <h2>Trenzas Urbanas</h2>
+
+      <p>
+        Trenzas personalizadas con y sin extensiones.
+      </p>
+
+      <p>
+        📍 Barrio Mosco · Foteringa 1095
+      </p>
+
+      <p>
+        También trabajamos a domicilio según la zona.
+      </p>
+
+
+      <div class="socials">
+
+        <a
+          href="https://www.instagram.com/trenzas.urbanas_fsa/"
+          target="_blank"
+          rel="noopener"
+        >
+          Instagram
+        </a>
+
+
+        <!-- CAMBIAR ESTOS ENLACES CUANDO TENGAS TUS REDES -->
+
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener"
+        >
+          TikTok
+        </a>
+
+
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener"
+        >
+          Facebook
+        </a>
+
+
+        <a
+          href="https://wa.me/543705141113"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp
+        </a>
+
+      </div>
+
+
+      <a
+        href="#servicios"
+        class="footer-reserve"
+      >
+        RESERVAR TURNO
       </a>
+
+
+      <div class="copyright">
+
+        © 2026 Trenzas Urbanas · Todos los derechos reservados.
+
+      </div>
+
     </div>
-  </section>
 
-  <section id="catalogo">
-  <h2>Catálogo</h2>
-  <div class="grid" id="catalogoGrid">
-    <!-- El catálogo se generará con JavaScript -->
-  </div>
-</section>
+  </footer>
 
-<section id="promos">
-  <h2>PROMOCIONES DE JULIO</h2>
 
-  <div class="card promo">
-    <div class="0050.jpg">💜</div>
-
-    <h3>5% OFF de regalo por utilizar la web</h3>
-
-    <p>
-      Durante todo julio obtené un <strong>5% de descuento</strong>
-      por utilizar la web.
-    </p>
-
-    <button onclick="aplicarDescuento(5)">
-     💜 Aplicar 5% OFF
-    </button>
-    </div>
-</section>
-
-<section id="galeria">
-  <div class="card">
-    <h2>Galería de Trabajos</h2>
-    <div class="galeria">
-      <img src="IMG-1.jpg" alt="Trabajo 1">
-      <img src="IMG-2.jpg" alt="Trabajo 2">
-      <img src="IMG-20260120-WA0026.jpg" alt="Trabajo 3">
-      <img src="Polish_20250906_212749490.jpg" alt="Trabajo 4">
-      <img src="Polish_20251117_105259763.jpg" alt="Trabajo 5">
-      <img src="Polish_20251213_201931954.jpg" alt="Trabajo 6">
-      <img src="Polish_20260119_132342937.jpg" alt="Trabajo 7">
-      <img src="Polish_20260124_210323654.jpg" alt="Trabajo 8">
-      <img src="Polish_20260202_143314029.jpg" alt="Trabajo 9">
-      <img src="Polish_20260213_110215226.jpg" alt="Trabajo 10">
-      <img src="Polish_20260419_173438026.jpg" alt="Trabajo 11">
-      <img src="Polish_20260510_184549120.jpg" alt="Trabajo 12">
-      <img src="Polish_20260510_203337325.jpg" alt="Trabajo 13">
-    </div>
-  </div>
-</section>
-
-<section id="redes">
-  <div class="card">
-    <h2>Redes Sociales</h2>
-    <p>Séguinos en nuestras redes para ver trabajos, promociones y novedades 💜</p>
-    <a class="btn" href="https://www.instagram.com/trenzas.urbanas_fsa" target="_blank">Instagram</a>
-    <br><br>
-    <a class="btn" href="https://www.tiktok.com/@trenzas.urbanas_fsa?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
-    <br><br>
-    <a class="btn" href="https://www.facebook.com/share/1AxaCwkpqf/" target="_blank">Facebook</a>
-  </div>
-</section>
-
-<a class="btn float" href="https://wa.me/543705141113?text=Quiero%20reservar%20un%20turno..." target="_blank">WhatsApp</a>
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
   <script>
-  let carrito = [];
 
-  const catalogo = [
-    {
-      titulo: "TRENZAS SIMPLES SIN EXTENSIONES",
-      servicios: [
-        {
-          nombre: "FRONTALES SIMPLES",
-          descripcion:"Trenzas cocidas rectas en la parte frontal. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 15000,
-          img: "001.jpg"
-        },
-        {
-          nombre: "FRONTALES CON DISEÑO",
-          descripcion: "Trenzas cocidas con diseño personalizado. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 25000,
-          img: "002.jpg.webp"
-        },
-        {
-          nombre: "LATERALES SIMPLES",
-          descripcion:"Trenzas cocidas rectas en la parte lateral. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 15000,
-          img: "003.jpg"
-        },
-        {
-          nombre: "LATERALES CON DISEÑO",
-          descripcion:"Trenzas cocidas con diseño personalizado en la parte lateral. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 25000,
-          img: "004.jpg"
-        },
-        {
-          nombre: "CORONA COMPLETA SIMPLE",
-          descripcion: "Trenzas cocidas rectas, media cabeza de la parte frontal. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 25000,
-          img: "005.jpg"
-        },
-        {
-          nombre: "CORONA COMPLETA CON DISEÑO",
-          descripcion: "trenzas cocidas rectas, media cabeza de la parte frontal. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 35000,
-          img: "006.jpg.webp"
-        },
-        {
-          nombre: "VINCHA SIMPLE",
-          descripcion: "Trenzas en la zona de vincha simple. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 15000,
-          img: "007.jpg.webp"
-        },
-        {
-          nombre: "VINCHA CON DISEÑO",
-          descripcion: "Trenzas en la zona de vincha pero con diseño personalizado. Duración estimada mínimo 15 días con el cuidado correspondiente.",
-          precio: 20000,
-          img: "008.jpg"
-        },
-        {
-          nombre: "BOXEADORAS SIMPLES X2",
-          descripcion: "Dos trenzas simples. Duración estimada: mínimo 15 días con el cuidado correspondiente.",
-          precio: 25000,
-          img: "009.jpg"
-        },
-        {
-          nombre: "BOXEADORA CON DISEÑO",
-          descripcion: "Dos boxeadoras en los laterales pueden tener diseños personalizados. Duración estimada mínimo 15 días con el cuidado correspondiente.",
-          precio: 40000,
-          img: "0010.jpg"
-        },
-        {
-          nombre: "CORNROWS SIMPLES",
-          descripcion: "Estilo de boxeadoras simples con el cabello natural hasta ocho trenzas en todo el cabello. Duración estimada mínimo 15 días con el cuidado correspondiente.",
-          precio: 50000,
-          img: "0011.jpg.webp"
-        },
-        {
-          nombre: "CORNROWS CON DISEÑO",
-          descripcion: "Estilo de boxeadoras con diseño personalizado en todo el cabello natural. Duración estimada mínimo 15 días con el cuidado correspondiente.",
-          precio: 70000,
-          img: "0012.jpg.webp"
-        },
-        {
-          nombre: "CORNROWS PARA CABELLO CORTO",
-          descripcion: "El largo mínimo del cabello debe ser de 15 a 20 cm ya que es sin extensiones. Es obligatorio enviar foto del largo antes deconfirmar el turno, para evaluar si el trabajo es posible y garantizar un buen resultado.",
-          precio: 50000,
-          img: "0013.jpg"
-        },
-        {
-          nombre: "BOX BRAIDS / FULANIS BRAIDS SIN EXTENSIONES",
-          descripcion: "Africanas simples o con diseños con el cabello natural sin extensiones. Duración estimada mínimo 25 días con el cuidado correspondiente.",
-          precio: 70000,
-          img: "0014.jpg.webp"
-        }
+    /* =====================================================
+       CONFIGURACIÓN PRINCIPAL
+       
+       ACÁ PODÉS CAMBIAR SERVICIOS Y PRECIOS
+    ====================================================== */
+
+
+    const WHATSAPP_NUMBER = "543705141113";
+
+
+    /*
+      SERVICIOS
+
+      Para agregar otro servicio copiá un bloque como este:
+
+      {
+        id: 9,
+        name: "Nombre",
+        description: "Descripción",
+        price: 50000,
+        image: ""
+      }
+
+      Si querés agregar una foto:
+
+      image: "imagenes/nombre-de-la-foto.jpg"
+
+    */
+
+
+    const SERVICES = [
+
+      {
+        id: 1,
+        name: "Trenzas clásicas",
+        description: "Diseños personalizados de trenzas clásicas, con o sin extensiones.",
+        price: 25000,
+        image: ""
+      },
+
+      {
+        id: 2,
+        name: "Trenzas con extensiones",
+        description: "Trenzas con Kanekalon para agregar color, largo y volumen.",
+        price: 45000,
+        image: ""
+      },
+
+      {
+        id: 3,
+        name: "Microbraids",
+        description: "Micro trenzas personalizadas para lograr un acabado delicado y diferente.",
+        price: 50000,
+        image: ""
+      },
+
+      {
+        id: 4,
+        name: "Trenzas cosidas",
+        description: "Diseños de trenzas cosidas adaptados a tu cabello y estilo.",
+        price: 40000,
+        image: ""
+      },
+
+      {
+        id: 5,
+        name: "Microextensiones con Kanekalon",
+        description: "Microextensiones para sumar largo, volumen y color.",
+        price: 50000,
+        image: ""
+      },
+
+      {
+        id: 6,
+        name: "Coletas desmontables",
+        description: "Coletas y mechitas de colores para cambiar tu look.",
+        price: 20000,
+        image: ""
+      },
+
+      {
+        id: 7,
+        name: "Recogidos con trenzas",
+        description: "Peinados y recogidos personalizados con detalles de trenzas.",
+        price: 30000,
+        image: ""
+      },
+
+      {
+        id: 8,
+        name: "Stand de trenzas y glitter",
+        description: "Servicio para eventos con trenzas, colores, glitter y accesorios.",
+        price: 60000,
+        image: ""
+      }
+
+    ];
+
+
+    /* =====================================================
+       AGENDA
+       
+       ACÁ CONFIGURÁS LOS DÍAS Y HORARIOS.
+       
+       FORMATO:
+
+       "2026-10-07": [
+         "07:30",
+         "09:00",
+         "10:30",
+         "15:30",
+         "17:00",
+         "18:30",
+         "20:00"
+       ]
+
+       Para bloquear un horario simplemente sacalo.
+
+       Para bloquear todo un día, eliminá ese día.
+
+    ====================================================== */
+
+
+    const AVAILABILITY = {
+
+      "2026-10-07": [
+        "07:30",
+        "09:00",
+        "10:30",
+        "15:30",
+        "17:00",
+        "18:30",
+        "20:00"
+      ],
+
+      "2026-10-08": [
+        "07:30",
+        "09:00",
+        "10:30",
+        "15:30",
+        "17:00",
+        "18:30",
+        "20:00"
+      ],
+
+      "2026-10-09": [
+        "07:30",
+        "09:00",
+        "10:30",
+        "15:30",
+        "17:00",
+        "18:30",
+        "20:00"
+      ],
+
+      "2026-10-10": [
+        "09:00",
+        "10:30",
+        "15:30",
+        "17:00"
       ]
-    },
-    {
-      titulo: "TRENZAS CON EXTENSIONES KANEKALON",
-      servicios: [
-        {
-          nombre: "BOX BRAIDS MEDIUM",
-          descripcion: "Los turnos deben ser reservados con un mínimo de 2 días de anticipacion abonando el 25% como seña. Incluye 5 paquetes y el servicio dura alrededor de 8/10 horas aprox dependiendo el largo y tamaño de las trenzas. Su Duracion es de maximo 2 meses dependiendo el cuidado correspondiente.",
-          precio: 130000,
-          img: "0015.jpg.webp"
-        },
-        {
-          nombre: "BOX BRAIDS JUMBO",
-          descripcion: "Los turnos deben ser reservados con un mínimo de 2 días de anticipacion abonando el 25% como seña. Incluye 4 paquetes y el servicio dura alrededor de 6/8 horas aprox dependiendo el largo y tamaño de las trenzas. Su Duracion es de maximo 2 meses dependiendo el cuidado correspondiente.",
-          precio: 95000,
-          img: "0016.jpg.webp"
-        },
-        {
-          nombre: "BOX BRAIDS SMALL",
-          descripcion: "Los turnos deben ser reservados con un mínimo de 2 días de anticipacion abonando el 25% como seña. Incluye 6 paquetes y el servicio dura alrededor de 6/8 horas aprox dependiendo el largo y tamaño de las trenzas. Su Duracion es de maximo 2 meses dependiendo el cuidado correspondiente.",
-          precio: 150000,
-          img: "0017.jpg.webp"
-        },
-        {
-        nombre: "BOX BRAIDS CORTITAS",
-          descripcion: "Los turnos deben ser reservados con un mínimo de 2 días de anticipacion abonando el 25% como seña. Incluye 5 paquetes y el servicio dura alrededor de 6/8 horas aprox dependiendo el largo y tamaño de las trenzas. Su Duracion es de maximo 2 meses dependiendo el cuidado correspondiente.",
-          precio: 100000,
-          img: "0018.jpg"
-        },
-        {
-          nombre: "BOX BRAIDS CORTITAS CON RULOS",
-          descripcion: "Los turnos deben ser reservados con un mínimo de 2 días de anticipacion abonando el 25% como seña. Incluye 5 paquetes y el servicio dura alrededor de 8/10 horas aprox dependiendo el largo y tamaño de las trenzas. Su Duracion es de maximo 2 meses dependiendo el cuidado correspondiente.",
-          precio: 150000,
-          img: "0020.jpg"
-        },
-        {
-          nombre: "FULANIS BRAIDS",
-          descripcion: "Los turnos deben ser reservados con un mínimo de 2 días de anticipacion abonando el 25% como seña. Incluye 5 paquetes y el servicio dura alrededor de 8/10 horas aprox dependiendo el largo y tamaño de las trenzas.Su Duracion es de maximo 2 meses dependiendo el cuidado correspondiente.",
-          precio: 130000,
-          img: "0019.jpg"
-        },
-        {
-          nombre: "BOXEADORAS SIMPLES X2",
-          descripcion: "Dos trenzas simples. Duración estimada: mínimo 20 dias aprox con el cuidado correspondiente.",
-          precio: 50000,
-          img: "009.jpg"
-        },
-        {
-          nombre: "BOXEADORA CON DISEÑO",
-          descripcion: "Dos boxeadoras en los laterales pueden tener diseños personalizados. Duración estimada 20 dias con el cuidado correspondiente.",
-          precio: 60000,
-          img: "0010.jpg"
-        },
-        {
-          nombre: "CORNROWS EN TODO EL CABELLO",
-          descripcion: "Estilo de boxeadoras simples o con diseño en todo el cabello. Duración estimada mínimo 20 días con el cuidado correspondiente.",
-          precio: 70000,
-          img: "0011.jpg.webp"
-        },
-        {
-          nombre: "CORNROWS PARA CABELLO CORTO",
-          descripcion: "El largo mínimo del cabello debe ser de 15 a 20 cm. Es obligatorio enviar foto del largo, para evaluar si el trabajo es posible y garantizar un buen resultado. servicio con extensiones para garantizar la durabilidad de la trenzas y mejor estetica.",
-          precio: 80000,
-          img: "0013.jpg"
-        }
+
+    };
+
+
+    /*
+      HORARIOS OCUPADOS
+
+      Ejemplo:
+
+      "2026-10-07": [
+        "10:30",
+        "18:30"
       ]
-    },
-    {
-      titulo: "EXTENSIONES KANEKALON y TINSEL",
-      servicios: [
-        {
-          nombre: "MICRO BRAIDS SIMPLE",
-          descripcion: "Incluye 2 paquete de kanekalon de un solo tono. Trenzas finas realizadas con extensiones kanekalon de fibra sintética para aportar largo, volumen o color. Son una opción práctica, cómoda y personalizable para cambiar de look ya que simula el movimiento y textura del cabello natural. Se pueden lavar, secar, planchar y ondular (bajas temperaturas para no quemar la fibra sintética). Duración mínimo 30 dias, según el crecimiento del cabello y los cuidados que reciban.",
-          precio: 75000,
-          img: "0021.jpg"
-        },
-        {
-          nombre: "CORTINA DE MECHAS DE KANEKALON ESTILO MICRO BRAIDS",
-          descripcion: "Un solo bloque de mechas de kanekalon, Especial para niñas o reflejos. Incluye hasta 1 paquetes de kanekalon de fibra sintética de un solo tono.",
-          precio: 40000,
-          img: "0023.jpg"
-        },
-        {
-          nombre: "HILOS HAIR TINSEL",
-          descripcion: "Añadí un toque de brillo a tu cabello con hilos tinsel. Son mechones finos y luminosos que se colocan sin dañar el cabello, ideales para cualquier edad y ocasión. Disponibles en distintos colores para lograr un look divertido, elegante y lleno de estilo. Duran aprox. 1 mes (se recomienda no usar planchita en altas temperaturas)",
-          precio: 10000,
-          img: "0024.jpg"
-        },
-        {
-          nombre: "TRENZAS PLAYERAS CON ACCESORIOS",
-          descripcion: "Incluye un paquete de accesorios o hasta 6 accesorios sueltos para trenzas sueltas",
-          precio: 10000,
-          img: "0025.jpg"
-        },
-        {
-          nombre: "TRENZAS SUELTAS CON EXTENSIONES KANEKALON",
-          descripcion: "Hasta 15 trenzas sueltas. Incluye un paquete de kanekalon de fibra sintética de un solo tono",
-          precio: 25000,
-          img: "0026.jpg"
-        },
-        {
-          nombre: "PEINADO DE RUMI K-POP",
-          descripcion: "El peinado de RUMI de las k-pop Demon Hunters (las guerreras k-pop), incluye un paquete de extensión kanekalon Violeta, accesorios y glitter para resaltar tu look y lleva tu estilo a otro nivel.",
-          precio: 40000,
-          img: "0041.jpg"
-         },
-        {
-          nombre: "TRENZAS SIMPLES CON EXTENSIONES",
-          descripcion: "Trenzas simples con agregado de kanekalon de un solo tono, dependiendo el estilo puede variar el precio",
-          precio: 35000,
-          img: "0051.jpg"
-        }
+
+      Esos horarios aparecerán bloqueados.
+
+      IMPORTANTE:
+      Esto funciona como configuración manual.
+      Para que una reserva hecha por una clienta bloquee
+      automáticamente el horario para TODAS las demás,
+      hace falta una base de datos externa.
+    */
+
+
+    const BOOKED_TIMES = {
+
+      "2026-10-07": [
+        "10:30",
+        "18:30"
+      ],
+
+      "2026-10-08": [
+        "15:30"
       ]
-    },
-    {
-      titulo: "ACCESORIOS Y RETIRO",
-      servicios: [
-        {
-          nombre: "RETIRO DE MICRO BRAIDS",
-          descripcion: "Retiramos las Micro Braids para mejor cuidado de la raiz y asi poder hacer otro mantenimiento de la misma.",
-          precio: 15000,
-          img: "0045.jpg"
-        },
-        {
-          nombre: "ACCESORIOS CUFF O ARGOLLAS",
-          descripcion: "Incluye hasta 10 accesorios de cualquier estilo.",
-          precio: 2500,
-          img: "0027.jpg"
-        },
-        {
-          nombre: "HILOS Y CINTAS PARA ACCESORIOS",
-          descripcion: "Podes agregar estilo a tus trenzas con hilos y cintas.",
-          precio: 2500,
-          img: "0028.jpg"
-        }
-      ]
-    },
-    {
-      titulo: "COLETAS PONYTAILS Y COLETAS DESMONTABLES",
-      servicios: [
-        {
-          nombre: "COLETA ALTA SIN TRENZAS CON EXTENSIONES",
-          descripcion: "diseñada para ofrecer máximo volumen y largo, esta extensión tipo Ponytail se coloca de forma rápida y segura permitiéndote cambiar el estilo sin esfuerzo y sin dañar tu cabello natural. 100% desmontable práctico para poner y quitar cuando quieras",
-          precio: 40000,
-          img: "0048.jpg"
-        },
-        {
-          nombre: "COLETA CON TRENZAS EN MEDIA CABEZA CON EXTENSIONES",
-          descripcion: "Coleta alta con trenza en la media cabeza y extensiones kanekalon suelto.",
-          precio: 55000,
-          img: "0036.jpg"
-        },
-        {
-          nombre: "COLETA CON TRENZAS EN MEDIA CABEZA SIN EXTENSIONES",
-          descripcion: "Coleta alta con trezas con el cabello natural, cuya duración varía entre 1 y 4 semanas dependiendo el cuidado.",
-          precio: 30000,
-          img: "0040.jpg"
-        },
-        {
-          nombre: "COLETA DESMONTABLE SIMPLE",
-          descripcion: "incluye un paquete de kanekalon, y mide aproximadamente 90 cm de largo. Coletas desmontables de kanekalon de fibra sintética que imitan el movimiento del cabello natural, son ideales para cambiar el look al instante sin dañar tu pelo y se colocan fácilmente. Es resistente al calor (planchar únicamente a temperatura mínima para evitar quemar la fibra).",
-          precio: 30000,
-          img: "0037.jpg"
-        },
-        {
-          nombre: "COLETA DESMONTABLE CON MÁS VOLUMEN",
-          descripcion: "incluye 2 paquetes de kanekalon para más volumen y largo. Mide aproximadamente 90 cm de largo o un poquito más. Coletas desmontable de kanekalon de fibra sintética que imitan el movimiento del cabello natural, son ideales para cambiar el look al instante sin dañar tu pelo y se colocan fácilmente. es resistente al calor (planchar únicamente a temperatura mínima para evitar quemar la fibra).",
-          precio: 45000,
-          img: "0038.jpg"
-        },
-        {
-          nombre: "COLETA DESMONTABLE DE RUMI",
-          descripcion: "Coleta de RUMI de las k-pop Demon Hunters (las guerreras k-pop), es desmontables para varios usos",
-          precio: 30000,
-          img: "0042.jpg"
-        },
-        {
-          nombre: "PONY BRAIDS COMPLETO",
-          descripcion: "Un peinado moderno y elegante que combina trenzas prolijas con una coleta alta. Ideal para eventos o para lucir un estilo llamativo y duradero. Personalizamos el diseño de las trenzas para adaptarlo a tu estilo y ocasión, duración varía entre dos y cinco semanas dependiendo el cuidado.",
-          precio: 65000,
-          img: "0049.jpg"
-        }
-      ]
-    },
-    {
-      titulo: "PEINADOS Y RECOGIDOS",
-      servicios: [
-        {
-          nombre: "PEINADOS SOCIALES CON RECOGIDO O TRENZAS",
-          descripcion: " Peinados o Recogidos con bucles y trenzas. Puede variar el precio dependiendo el estilo elegido",
-          precio: 45000,
-          img: "0035.jpg"
-        },
-        {
-          nombre: "RECOGIDO COMPLETO CON TRENZAS",
-          descripcion: "Especial para eventos folclóricos o elegante. Puede variar el precio dependiendo el estilo elegido",
-          precio: 30000,
-          img: "0034.jpg"
-        }
-      ]
+
+    };
+
+
+    /* =====================================================
+       CARRITO
+    ====================================================== */
+
+
+    let cart = [];
+
+
+    let selectedTime = "";
+
+
+    /* =====================================================
+       ELEMENTOS
+    ====================================================== */
+
+
+    const servicesGrid =
+      document.getElementById("servicesGrid");
+
+    const cartButton =
+      document.getElementById("cartButton");
+
+    const cartPanel =
+      document.getElementById("cartPanel");
+
+    const closeCart =
+      document.getElementById("closeCart");
+
+    const overlay =
+      document.getElementById("overlay");
+
+    const cartItems =
+      document.getElementById("cartItems");
+
+    const cartCount =
+      document.getElementById("cartCount");
+
+    const cartTotal =
+      document.getElementById("cartTotal");
+
+    const continueButton =
+      document.getElementById("continueButton");
+
+    const dateInput =
+      document.getElementById("dateInput");
+
+    const timeGrid =
+      document.getElementById("timeGrid");
+
+    const whatsappButton =
+      document.getElementById("whatsappButton");
+
+    const homeNotice =
+      document.getElementById("homeNotice");
+
+    const summaryServices =
+      document.getElementById("summaryServices");
+
+    const summaryLocation =
+      document.getElementById("summaryLocation");
+
+    const summaryDate =
+      document.getElementById("summaryDate");
+
+    const summaryTime =
+      document.getElementById("summaryTime");
+
+    const summaryTotal =
+      document.getElementById("summaryTotal");
+
+
+    /* =====================================================
+       FORMATO DE DINERO
+    ====================================================== */
+
+
+    function formatPrice(price) {
+
+      return new Intl.NumberFormat("es-AR", {
+        style: "currency",
+        currency: "ARS",
+        maximumFractionDigits: 0
+      }).format(price);
+
     }
-  ];
 
-  const grid = document.getElementById("catalogoGrid");
 
-  catalogo.forEach(categoria => {
-    // Agregamos el título de la categoría
-    grid.innerHTML += `
-<h2 class="titulo-categoria">
-${categoria.titulo}
-</h2>`;
-    let gridServicios = `<div class="grid">`;
-    
-    categoria.servicios.forEach(s => {
-      gridServicios += `
-        <div class="card">
-          <img src="${s.img}" class="img" alt="${s.nombre}">
-          <h3>${s.nombre}</h3>
-          <p class="descripcion">${s.descripcion}</p>
-          <p class="precio">$${s.precio.toLocaleString()}</p>
-          <button onclick="agregar('${s.nombre}', ${s.precio})">Agregar al carrito</button>
-        </div>`;
-    });
-    gridServicios += `</div>`;
-    grid.innerHTML += gridServicios;
-  });
+    /* =====================================================
+       MOSTRAR SERVICIOS
+    ====================================================== */
 
-  function agregar(nombre, precio) {
-    carrito.push({ nombre, precio });
-    document.getElementById("cantidad").innerText = carrito.length;
-  }
 
-  let descuento = 0;
+    function renderServices() {
 
-document.getElementById("cart").onclick = function () {
-  if (carrito.length === 0) {
-    alert("Todavía no agregaste ningún servicio.");
-    return;
-  }
+      servicesGrid.innerHTML = "";
 
-  actualizarCarrito();
-  document.getElementById("modalCarrito").style.display = "block";
-};
 
-function cerrarCarrito() {
-  document.getElementById("modalCarrito").style.display = "none";
-}
+      SERVICES.forEach(service => {
 
-function aplicarDescuento(porcentaje) {
-  descuento = porcentaje;
-  actualizarCarrito();
-}
+        const card =
+          document.createElement("article");
 
-function actualizarCarrito() {
+        card.className = "service-card";
 
-  let lista = document.getElementById("listaCarrito");
-  lista.innerHTML = "";
 
-  let subtotal = 0;
+        let imageHTML = "";
 
-  carrito.forEach((item, index) => {
-    subtotal += item.precio;
+        if (service.image) {
 
-    lista.innerHTML += `
-      <p>
-        ${item.nombre} - $${item.precio.toLocaleString()}
-        <button onclick="eliminar(${index})">❌</button>
-      </p>
-    `;
-  });
+          imageHTML = `
+            <img
+              src="${service.image}"
+              alt="${service.name}"
+              loading="lazy"
+            >
+          `;
 
-  let total = subtotal - (subtotal * descuento / 100);
+        } else {
 
-  document.getElementById("subtotal").innerText = "$" + subtotal.toLocaleString();
-  document.getElementById("descuento").innerText = descuento + "%";
-  document.getElementById("total").innerText = "$" + total.toLocaleString();
-}
+          imageHTML = `
+            <div class="service-no-image">
+              Trenzas Urbanas
+            </div>
+          `;
 
-function eliminar(i) {
-  carrito.splice(i, 1);
-  document.getElementById("cantidad").innerText = carrito.length;
+        }
 
-  if (carrito.length == 0) {
-    cerrarCarrito();
-    return;
-  }
 
-  actualizarCarrito();
-  }
-  function enviarWhatsApp() {
+        card.innerHTML = `
 
-  let subtotal = 0;
-  let mensaje = "Hola, quiero reservar este turno:%0A%0A";
+          <div class="service-image">
 
-  carrito.forEach(item => {
-    mensaje += "• " + item.nombre + " - $" + item.precio.toLocaleString() + "%0A";
-    subtotal += item.precio;
-  });
+            ${imageHTML}
 
-  let total = subtotal - (subtotal * descuento / 100);
+          </div>
 
-  mensaje += "%0A";
-  mensaje += "Subtotal: $" + subtotal.toLocaleString() + "%0A";
-  mensaje += "Descuento aplicado: " + descuento + "%25%0A";
-  mensaje += "TOTAL: $" + total.toLocaleString();
 
-  window.open("https://wa.me/543705141113?text=" + mensaje);
-  }
+          <div class="service-info">
+
+            <h3>
+              ${service.name}
+            </h3>
+
+
+            <p>
+              ${service.description}
+            </p>
+
+
+            <div class="price">
+
+              ${formatPrice(service.price)}
+
+            </div>
+
+
+            <button
+              class="add-button"
+              onclick="addToCart(${service.id})"
+            >
+              AGREGAR AL CARRITO
+            </button>
+
+          </div>
+
+        `;
+
+
+        servicesGrid.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =====================================================
+       AGREGAR AL CARRITO
+    ====================================================== */
+
+
+    function addToCart(serviceId) {
+
+      const service =
+        SERVICES.find(item => item.id === serviceId);
+
+
+      if (!service) return;
+
+
+      const existing =
+        cart.find(item => item.id === serviceId);
+
+
+      if (existing) {
+
+        existing.quantity++;
+
+      } else {
+
+        cart.push({
+          ...service,
+          quantity: 1
+        });
+
+      }
+
+
+      renderCart();
+
+      openCart();
+
+    }
+
+
+    /* =====================================================
+       CAMBIAR CANTIDAD
+    ====================================================== */
+
+
+    function changeQuantity(serviceId, amount) {
+
+      const item =
+        cart.find(item => item.id === serviceId);
+
+
+      if (!item) return;
+
+
+      item.quantity += amount;
+
+
+      if (item.quantity <= 0) {
+
+        cart =
+          cart.filter(item => item.id !== serviceId);
+
+      }
+
+
+      renderCart();
+
+    }
+
+
+    /* =====================================================
+       ELIMINAR SERVICIO
+    ====================================================== */
+
+
+    function removeFromCart(serviceId) {
+
+      cart =
+        cart.filter(item => item.id !== serviceId);
+
+
+      renderCart();
+
+    }
+
+
+    /* =====================================================
+       TOTAL
+    ====================================================== */
+
+
+    function getCartTotal() {
+
+      return cart.reduce(
+        (total, item) =>
+          total + item.price * item.quantity,
+        0
+      );
+
+    }
+
+
+    /* =====================================================
+       CANTIDAD TOTAL
+    ====================================================== */
+
+
+    function getCartQuantity() {
+
+      return cart.reduce(
+        (total, item) =>
+          total + item.quantity,
+        0
+      );
+
+    }
+
+
+    /* =====================================================
+       MOSTRAR CARRITO
+    ====================================================== */
+
+
+    function renderCart() {
+
+      const quantity =
+        getCartQuantity();
+
+
+      cartCount.textContent =
+        quantity;
+
+
+      cartTotal.textContent =
+        formatPrice(getCartTotal());
+
+
+      if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+          <div class="empty-cart">
+
+            Tu carrito está vacío.
+
+            <br><br>
+
+            Elegí uno o más servicios para comenzar.
+
+          </div>
+
+        `;
+
+        continueButton.disabled = true;
+
+        updateSummary();
+
+        return;
+
+      }
+
+
+      continueButton.disabled = false;
+
+
+      cartItems.innerHTML = "";
+
+
+      cart.forEach(item => {
+
+        const element =
+          document.createElement("div");
+
+        element.className = "cart-item";
+
+
+        element.innerHTML = `
+
+          <div class="cart-item-top">
+
+            <span class="cart-item-name">
+
+              ${item.name}
+
+            </span>
+
+
+            <span class="cart-item-price">
+
+              ${formatPrice(
+                item.price * item.quantity
+              )}
+
+            </span>
+
+          </div>
+
+
+          <div class="cart-item-controls">
+
+            <div class="quantity">
+
+              <button
+                onclick="changeQuantity(${item.id}, -1)"
+              >
+                −
+              </button>
+
+
+              <strong>
+                ${item.quantity}
+              </strong>
+
+
+              <button
+                onclick="changeQuantity(${item.id}, 1)"
+              >
+                +
+              </button>
+
+            </div>
+
+
+            <button
+              class="remove-button"
+              onclick="removeFromCart(${item.id})"
+            >
+              Eliminar
+            </button>
+
+          </div>
+
+        `;
+
+
+        cartItems.appendChild(element);
+
+      });
+
+
+      updateSummary();
+
+    }
+
+
+    /* =====================================================
+       CARRITO ABRIR / CERRAR
+    ====================================================== */
+
+
+    function openCart() {
+
+      cartPanel.classList.add("open");
+
+      overlay.classList.add("show");
+
+    }
+
+
+    function closeCartPanel() {
+
+      cartPanel.classList.remove("open");
+
+      overlay.classList.remove("show");
+
+    }
+
+
+    cartButton.addEventListener(
+      "click",
+      openCart
+    );
+
+
+    closeCart.addEventListener(
+      "click",
+      closeCartPanel
+    );
+
+
+    overlay.addEventListener(
+      "click",
+      closeCartPanel
+    );
+
+
+    /* =====================================================
+       CONTINUAR CON RESERVA
+    ====================================================== */
+
+
+    continueButton.addEventListener(
+      "click",
+      () => {
+
+        if (cart.length === 0) return;
+
+
+        closeCartPanel();
+
+
+        document
+          .getElementById("reserva")
+          .scrollIntoView({
+            behavior: "smooth"
+          });
+
+      }
+    );
+
+
+    /* =====================================================
+       MODALIDAD
+    ====================================================== */
+
+
+    document
+      .querySelectorAll('input[name="location"]')
+      .forEach(input => {
+
+        input.addEventListener(
+          "change",
+          () => {
+
+            if (input.value === "A domicilio") {
+
+              homeNotice.classList.add("show");
+
+            } else {
+
+              homeNotice.classList.remove("show");
+
+            }
+
+
+            updateSummary();
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       FECHA MÍNIMA
+    ====================================================== */
+
+
+    function setMinimumDate() {
+
+      const today =
+        new Date();
+
+
+      const year =
+        today.getFullYear();
+
+
+      const month =
+        String(today.getMonth() + 1)
+          .padStart(2, "0");
+
+
+      const day =
+        String(today.getDate())
+          .padStart(2, "0");
+
+
+      const todayString =
+        `${year}-${month}-${day}`;
+
+
+      dateInput.min =
+        todayString;
+
+    }
+
+
+    setMinimumDate();
+
+
+    /* =====================================================
+       CAMBIAR FECHA
+    ====================================================== */
+
+
+    dateInput.addEventListener(
+      "change",
+      () => {
+
+        selectedTime = "";
+
+        renderTimes();
+
+        updateSummary();
+
+      }
+    );
+
+
+    /* =====================================================
+       MOSTRAR HORARIOS
+    ====================================================== */
+
+
+    function renderTimes() {
+
+      const date =
+        dateInput.value;
+
+
+      timeGrid.innerHTML = "";
+
+
+      if (!date) {
+
+        timeGrid.innerHTML = `
+
+          <div class="no-times">
+
+            Primero elegí una fecha.
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      const availableTimes =
+        AVAILABILITY[date];
+
+
+      if (!availableTimes) {
+
+        timeGrid.innerHTML = `
+
+          <div class="no-times">
+
+            No hay atención disponible
+            para esta fecha.
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      const booked =
+        BOOKED_TIMES[date] || [];
+
+
+      availableTimes.forEach(time => {
+
+        const button =
+          document.createElement("button");
+
+
+        button.className =
+          "time-button";
+
+
+        button.textContent =
+          time;
+
+
+        if (booked.includes(time)) {
+
+          button.disabled = true;
+
+          button.textContent =
+            `${time} · Ocupado`;
+
+        } else {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              selectedTime =
+                time;
+
+
+              document
+                .querySelectorAll(".time-button")
+                .forEach(btn => {
+
+                  btn.classList.remove(
+                    "selected"
+                  );
+
+                });
+
+
+              button.classList.add(
+                "selected"
+              );
+
+
+              updateSummary();
+
+            }
+          );
+
+        }
+
+
+        timeGrid.appendChild(button);
+
+      });
+
+    }
+
+
+    /* =====================================================
+       FORMATEAR FECHA
+    ====================================================== */
+
+
+    function formatDate(dateString) {
+
+      if (!dateString) return "—";
+
+
+      const parts =
+        dateString.split("-");
+
+
+      const date =
+        new Date(
+          Number(parts[0]),
+          Number(parts[1]) - 1,
+          Number(parts[2])
+        );
+
+
+      return new Intl.DateTimeFormat(
+        "es-AR",
+        {
+          weekday: "long",
+          day: "numeric",
+          month: "long"
+        }
+      ).format(date);
+
+    }
+
+
+    /* =====================================================
+       RESUMEN
+    ====================================================== */
+
+
+    function updateSummary() {
+
+      if (cart.length === 0) {
+
+        summaryServices.innerHTML =
+          "Seleccioná al menos un servicio.";
+
+      } else {
+
+        summaryServices.innerHTML =
+          cart.map(item => `
+
+            <div class="summary-line">
+
+              <span>
+                ${item.name}
+                ${item.quantity > 1
+                  ? ` x${item.quantity}`
+                  : ""}
+              </span>
+
+              <strong>
+                ${formatPrice(
+                  item.price * item.quantity
+                )}
+              </strong>
+
+            </div>
+
+          `).join("");
+
+      }
+
+
+      const location =
+        document.querySelector(
+          'input[name="location"]:checked'
+        );
+
+
+      summaryLocation.textContent =
+        location
+          ? location.value
+          : "En el estudio";
+
+
+      summaryDate.textContent =
+        dateInput.value
+          ? capitalize(
+              formatDate(dateInput.value)
+            )
+          : "—";
+
+
+      summaryTime.textContent =
+        selectedTime || "—";
+
+
+      summaryTotal.textContent =
+        formatPrice(getCartTotal());
+
+    }
+
+
+    /* =====================================================
+       MAYÚSCULA INICIAL
+    ====================================================== */
+
+
+    function capitalize(text) {
+
+      if (!text) return text;
+
+      return text.charAt(0).toUpperCase()
+        + text.slice(1);
+
+    }
+
+
+    /* =====================================================
+       WHATSAPP
+    ====================================================== */
+
+
+    whatsappButton.addEventListener(
+      "click",
+      () => {
+
+        if (cart.length === 0) {
+
+          alert(
+            "Primero agregá al menos un servicio."
+          );
+
+          return;
+
+        }
+
+
+        if (!dateInput.value) {
+
+          alert(
+            "Elegí una fecha para solicitar el turno."
+          );
+
+          dateInput.focus();
+
+          return;
+
+        }
+
+
+        if (!selectedTime) {
+
+          alert(
+            "Elegí un horario disponible."
+          );
+
+          return;
+
+        }
+
+
+        const location =
+          document.querySelector(
+            'input[name="location"]:checked'
+          )?.value || "En el estudio";
+
+
+        const total =
+          getCartTotal();
+
+
+        let message =
+          "Hola, Trenzas Urbanas. " +
+          "Quiero solicitar un turno.%0A%0A";
+
+
+        message +=
+          "*Servicios:*%0A";
+
+
+        cart.forEach(item => {
+
+          message +=
+            `• ${item.name}`;
+
+
+          if (item.quantity > 1) {
+
+            message +=
+              ` x${item.quantity}`;
+
+          }
+
+
+          message +=
+            ` — ${formatPrice(
+              item.price * item.quantity
+            )}%0A`;
+
+        });
+
+
+        message += "%0A";
+
+
+        message +=
+          `*Fecha:* ${capitalize(
+            formatDate(dateInput.value)
+          )}%0A`;
+
+
+        message +=
+          `*Horario:* ${selectedTime}%0A`;
+
+
+        message +=
+          `*Modalidad:* ${location}%0A%0A`;
+
+
+        message +=
+          `*Total de servicios:* ${formatPrice(
+            total
+          )}%0A%0A`;
+
+
+        if (location === "A domicilio") {
+
+          message +=
+            "*Zona:* A confirmar%0A";
+
+
+          message +=
+            "*Recargo de domicilio:* A confirmar%0A%0A";
+
+        }
+
+
+        message +=
+          "Quedo a la espera de la confirmación del turno.";
+
+
+        const whatsappURL =
+          `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+
+        window.open(
+          whatsappURL,
+          "_blank"
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       INICIAR
+    ====================================================== */
+
+
+    renderServices();
+
+    renderCart();
+
+    updateSummary();
+
   </script>
-  
+
 </body>
 </html>
-
